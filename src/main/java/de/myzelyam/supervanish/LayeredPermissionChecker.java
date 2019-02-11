@@ -42,6 +42,7 @@ public class LayeredPermissionChecker {
         if (viewer == null)
             throw new IllegalArgumentException("viewer cannot be null");
         if (viewer == viewed) return true;
+        if(viewed.isOp() && !viewer.isOp()) return false;
         if (settings.getBoolean(
                 "IndicationFeatures.LayeredPermissions.LayeredSeeAndUsePermissions", false)) {
             VanishPlayer vanishViewer = plugin.getVanishPlayer(viewer);
